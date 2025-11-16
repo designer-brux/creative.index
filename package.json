@@ -1,0 +1,16 @@
+{
+  "name": "creative.index",
+  "version": "1.0.0",
+  "description": "Dive into the creative legacy of the world’s luxury maisons, tracing the visionaries who shaped style, culture, and identity.",
+  "main": "index.js",
+  "scripts": {
+    "dev":"next dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^13.1.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
