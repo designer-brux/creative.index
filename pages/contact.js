@@ -1,24 +1,10 @@
+import Header from "../components/header";
 import Link from "next/link";
 
 export default function Contact() {
   return (
     <section className="container">
-      <header className="header">
-        <Link href="/" className="nav-logo">
-          <div className="nav-brand">
-            <h1 className="heading-primary">creative.index</h1>
-            <p className="medium-p">
-              Dive into the creative legacy of the world’s luxury maisons.
-            </p>
-          </div>
-        </Link>
-
-        <nav className="nav-header">
-          <Link href="/maison">by.maisons</Link>
-          <Link href="/creatives">by.creatives</Link>
-          <Link href="/contact">contact</Link>
-        </nav>
-      </header>
+      <Header />
 
       <main className="main-body">
         <div className="body-header">
@@ -35,7 +21,17 @@ export default function Contact() {
           <Link href="/" className="logo-footer">
             <h1 className="heading-primary">creative.index</h1>
           </Link>
+          <p className="small-p">
+            All brand names and logos on creative.index are property of their
+            owners. This is an independent editorial project.
+          </p>
         </div>
+
+        <nav className="nav-footer">
+          <Link href="/maison">by.maisons</Link>
+          <Link href="/creatives">by.creatives</Link>
+          <Link href="/contact">contact</Link>
+        </nav>
       </footer>
     </section>
   );
