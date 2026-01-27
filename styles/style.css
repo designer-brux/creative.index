@@ -355,9 +355,15 @@ body::before {
 .hero-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   overflow: hidden;
-  object-position: center;
+  display: block;
+}
+
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Preenche o espaço sem deformar */
+  object-position: center; /* Centraliza o foco da imagem */
   display: block;
 }
 
@@ -660,53 +666,52 @@ body::before {
   }
 
   .btn-mobile-nav {
-    z-index: 1001; /* Maior que o 999 do nav-header */
-    border: none;
-    background: none;
-    cursor: pointer;
+    display: block; /* Garante que o botão apareça */
+    z-index: 1001;
+    position: relative;
+  }
+
+  .fa-xmark {
+    display: none !important;
+  }
+
+  .nav-open .fa-bars {
+    display: none !important;
+  }
+
+  .nav-open .fa-xmark {
+    display: block !important;
   }
 
   .nav-header {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0; /* Começa da esquerda para cobrir tudo */
     width: 100%;
-    height: 100vh; /* Ocupa exatamente a altura da tela */
-    background-color: #f2edeb; /* Cor de fundo do seu site */
+    height: 100vh;
+    background-color: #f2edeb;
+    z-index: 999;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centraliza os links verticalmente */
-    gap: 2rem; /* Espaço entre os links */
+    justify-content: center;
 
-    /* Garante que o menu comece escondido */
+    /* Animação suave lateral */
     transform: translateX(100%);
-    transition: transform 0.5s ease-in-out;
-    z-index: 999;
+    transition: transform 0.4s ease-in-out;
+
+    /* Reset de scroll */
+    overflow: hidden;
   }
 
   .nav-open .nav-header {
     transform: translateX(0);
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
   }
-
   .nav-header a {
     font-size: 2.4rem;
     height: auto; /* Impede que o link ocupe altura desnecessária */
     padding: 1rem;
-  }
-
-  .nav-open .icon-mobile-nav[name="close-outline"] {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .nav-open .icon-mobile-nav[name="menu-outline"] {
-    display: none;
   }
 }
 
@@ -726,13 +731,14 @@ body::before {
 
   /* Invertendo a Ordem */
   .hero-img {
-    order: 1; /* A imagem sobe */
+    order: 1;
     width: 100%;
-    height: 70dvh; /* Limitamos a imagem a 50% da altura da tela */
-    object-fit: contain;
-    height: 400px; /* Ou o valor que melhor se adaptar ao seu design */
-    width: 100%;
-    overflow: hidden;
+    height: 50vh; /* Define uma altura fixa para a hero no mobile */
+    min-height: 350px;
+  }
+
+  .hero-img img {
+    object-fit: cover; /* MUDAR de contain para cover */
   }
 
   .hero-text {

@@ -83,14 +83,8 @@ export default function Home() {
 
         <button className="btn-mobile-nav" onClick={toggleNav}>
           {/* Ícones de Menu e Fechar (ajustados para a lógica do seu CSS) */}
-          <i
-            className="fa-solid fa-bars icon-mobile-nav"
-            name="menu-outline"
-          ></i>
-          <i
-            className="fa-solid fa-xmark icon-mobile-nav"
-            name="close-outline"
-          ></i>
+          <i className="fa-solid fa-bars icon-mobile-nav"></i>
+          <i className="fa-solid fa-xmark icon-mobile-nav"></i>
         </button>
       </header>
 
