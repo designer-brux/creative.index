@@ -6,26 +6,79 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
   width: 100%;
   height: 100%;
-  font-family: "dm sans", Helvetica, Arial, sans-serif;
+  font-family: "General Sans", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
-  color: #000;
-  overflow: hidden; /* impede scroll */
+  color: #1a1a1a;
+  background: #f2edeb;
+  position: relative;
+}
+
+/* Efeito de Granulado (Noise Texture) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 4rem;
 }
 
 /******************************************************/
-/* GRID PRINCIPAL */
+/* PRE-LOADER */
 /******************************************************/
 
-.container {
-  display: grid;
-  grid-template-rows: 140px 1fr 100px;
-  height: 100vh;
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: #f2edeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition:
+    opacity 1s ease-in-out,
+    visibility 1s;
+}
+
+.loader-logo {
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  animation: fadePulse 2s infinite ease-in-out;
+}
+
+@keyframes fadePulse {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.preloader-hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
 /******************************************************/
@@ -34,36 +87,43 @@ body {
 
 .heading-primary {
   font-size: 2.8rem;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
-  color: #000;
+  color: #1a1a1a;
 }
 
 .heading-secondary {
   font-size: 4.8rem;
   font-weight: 600;
-  color: #000;
-  line-height: 1;
+  color: #1a1a1a;
+  line-height: 1.1;
 }
 
 .heading-tertiary {
+  font-size: 4.8rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: #1a1a1a;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+}
+
+.heading-quartiary {
   font-size: 1.6rem;
   font-weight: 600;
   text-decoration: none;
-  color: #000;
+  color: #1a1a1a;
 }
 
 .logo-footer {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #000;
+  text-decoration: none;
 }
 
 .large-p {
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.2;
-  color: #000;
+  color: #1a1a1a;
   max-width: 350px;
 }
 
@@ -80,6 +140,87 @@ body {
   font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.2;
+}
+
+/******************************************************/
+/* TEXT ANIMATIONS */
+/******************************************************/
+
+.reveal-text {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.reveal-text.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.img-reveal {
+  opacity: 0;
+  filter: blur(10px);
+  transform: scale(1.05);
+  transition:
+    transform 1.5s cubic-bezier(0.2, 1, 0.3, 1),
+    filter 1.5s ease-in-out,
+    opacity 1.2s ease-in;
+}
+
+.img-reveal.active {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
+.hero-img-animated {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 1s ease-out,
+    transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.hero-img-animated.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/******************************************************/
+/* IMG ANIMATIONS */
+/******************************************************/
+
+.img-container {
+  overflow: hidden;
+  position: relative;
+  background-color: #e0e0e0; /* Cor de fundo enquanto carrega */
+}
+
+.img-reveal {
+  transform: scale(1.1);
+  filter: blur(10px);
+  transition:
+    transform 1.5s cubic-bezier(0.2, 1, 0.3, 1),
+    filter 1.5s ease-in-out;
+}
+
+.img-reveal.active {
+  transform: scale(1);
+  filter: blur(0);
+}
+
+.hero-img-animated {
+  opacity: 0;
+  transform: translateY(30px); /* Começa 30px abaixo */
+  transition:
+    opacity 1s ease-out,
+    transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* Estado final da animação (mobile) */
+.hero-img-animated.active {
+  opacity: 1;
+  transform: translateY(0); /* Sobe para a posição original */
 }
 
 /******************************************************/
@@ -113,14 +254,15 @@ body {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   align-items: center;
+  height: 8rem;
+  margin-top: 0.8rem;
+  padding: 0 2.4rem;
 }
 
 .nav-logo {
   text-decoration: none;
-  color: #000;
+  color: #1a1a1a;
   height: 100%;
-  border: 1px solid #000;
-  padding: 1.6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -132,8 +274,26 @@ body {
   display: flex;
 }
 
-.nav-brand .medium-p {
-  margin-top: 0.4rem;
+.nav-header a {
+  position: relative;
+  font-weight: 300; /* Mais leve */
+  /* letter-spacing: 0.05em; */
+}
+
+/* Efeito de linha que surge no hover (estilo Prada/Gucci) */
+.nav-header a::after {
+  content: "";
+  position: absolute;
+  bottom: 2rem;
+  right: 1.6rem;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-header a:hover::after {
+  width: 10%; /* Linha discreta */
 }
 
 .nav-header a:link,
@@ -143,20 +303,19 @@ body {
   width: 100%;
   font-size: 1.6rem;
   font-weight: 600;
+  letter-spacing: 1;
   text-decoration: none;
-  color: #000;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
-  border-right: 1px solid #000;
+  color: #1a1a1a;
   padding: 1.6rem;
   display: flex;
   align-items: center;
+  justify-content: end;
 }
 
-.nav-header a:hover,
+/* .nav-header a:hover,
 .nav-header a:active {
-  background-color: #ddd;
-}
+    background-color: #ddd;
+} */
 
 .btn-mobile-nav {
   border: none;
@@ -177,51 +336,179 @@ body {
 }
 
 /******************************************************/
-/* BODY */
+/* HERO */
 /******************************************************/
 
-.main {
+.hero {
+  padding: 2.4rem 0;
   display: flex;
-  align-items: stretch;
-  height: auto;
+  flex-direction: row;
+  gap: 8rem;
+  height: 80vh;
+}
+
+.hero-text {
+  align-self: flex-end;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz a imagem cobrir o espaço cortando as sobras, sem deformar */
   overflow: hidden;
 }
 
-.large-btn:link,
-.large-btn:visited {
-  width: 100%;
-  height: 100%;
-  border-bottom: 1px solid #000;
-  border-right: 1px solid #000;
+/******************************************************/
+/* CATEGORIAS */
+/******************************************************/
+
+.categories-section {
+  height: 100dvh; /* Altura dinâmica */
+  padding: 8rem 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.grid-item {
+.categories-section .heading-tertiary {
+  margin-bottom: 4rem;
+  flex-shrink: 0; /* Impede que o título seja esmagado */
+}
+
+.categories-box {
+  display: flex;
+  gap: 8rem;
+  flex: 1;
+  min-height: 0; /* TRUQUE DE OURO: Permite que os filhos encolham se necessário */
+  align-items: stretch;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column; /* Organiza label e imagem verticalmente */
+  width: 100%;
+  position: relative; /* Necessário para posicionar as labels em relação ao item */
+}
+
+.categories-box .category-item:nth-child(2) {
+  margin-top: 10rem; /* Empurra a imagem da direita para baixo */
+  flex: 0 0 55%;
+}
+
+/* 1. Primeiro, garantimos que o wrapper esconda o zoom da imagem */
+.category-img-wrapper {
+  width: 100%;
+  flex: 1;
+  overflow: hidden;
   position: relative;
-  width: 100%;
-  height: 100%;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
-.grid-item img {
+/* 2. Adicionamos a transição na imagem */
+.category-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Transição suave e elegante */
 }
 
-.label-btn {
+.category-item:hover .category-img {
+  transform: scale(1.08);
+}
+
+/* 3. Adicionamos a transição na etiqueta */
+.category-label {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 1.2rem 2.4rem;
+  font-size: 1.8rem;
+  font-weight: 500;
   position: absolute;
-  bottom: 0;
-  left: 0; /* Opcional: Alinha o item à borda esquerda (ajuste conforme necessário) */
-  width: 100%;
-  background: #fff;
-  padding: 2.4rem;
-  box-sizing: border-box;
   z-index: 10;
+  transition: all 0.3s ease;
+  pointer-events: none; /* Evita que a etiqueta atrapalhe o hover na imagem */
 }
 
-.large-btn:hover .label-btn,
-.large-btn:focus .label-btn,
-.large-btn:active .label-btn {
-  background-color: #ddd;
+/* Ajuste das posições para o efeito de "overlap" */
+.label-left {
+  top: -1.5rem; /* Sobe um pouco para fora da imagem */
+  /* left: -1rem; */
+}
+
+.label-right {
+  top: -1.5rem;
+  right: 0rem;
+}
+
+/******************************************************/
+/* UPDATES */
+/******************************************************/
+
+.updates-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Divide em duas colunas iguais */
+  gap: 8rem;
+  align-items: center;
+  padding: 8rem 0;
+}
+
+/* Tratamento da Imagem */
+.updates-image-box {
+  width: 100%;
+  height: 100%; /* Ocupa a altura total da grid */
+}
+
+.updates-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crucial para não distorcer a foto */
+  display: block;
+}
+
+/* Lista de Updates */
+.updates-list {
+  list-style: none;
+  margin-top: 2.4rem;
+}
+
+.update-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.4rem 0;
+  border-bottom: 1px solid #1a1a1a;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.update-item:hover {
+  padding-left: 1rem; /* Efeito sutil de deslocamento */
+}
+
+.update-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.update-category {
+  font-size: 1.6rem;
+  color: #666;
+}
+
+.update-arrow {
+  font-size: 2.4rem;
+  font-weight: 300;
+}
+
+.update-link-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
 /******************************************************/
@@ -232,15 +519,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #000;
+  background: #1a1a1a;
   color: #fff;
-  padding: 1.6rem;
+  padding: 4rem 2.4rem;
 }
 
 .footer-logo {
   max-width: 580px;
   display: flex;
-  gap: 2.4rem;
+  flex-direction: column;
+  gap: 1.6rem;
 }
 
 .footer-logo .heading-primary {
@@ -294,21 +582,25 @@ body {
 }
 
 /******************************************************/
+/*BELOW 1024px (Small desktops) */
+/******************************************************/
+
+@media (max-width: 64em) {
+  .heading-secondary {
+    font-size: 4rem;
+  }
+
+  .heading-tertiary {
+    font-size: 4rem;
+  }
+}
+
+/******************************************************/
 /*BELOW 960px (Small desktops) */
 /******************************************************/
 
 @media (max-width: 60em) {
-  body {
-    overflow: scroll;
-  }
-
   .container {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-  }
-
-  .main {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -319,6 +611,22 @@ body {
     height: 50vh;
   }
 
+  .hero-img {
+    flex: 1;
+  }
+
+  .hero-text {
+    flex: 1;
+  }
+
+  .heading-secondary {
+    font-size: 3.2rem;
+  }
+
+  .heading-tertiary {
+    font-size: 3.2rem;
+  }
+
   .footer {
     display: flex;
     flex-direction: column;
@@ -326,8 +634,12 @@ body {
     padding: 2.4rem 1.6rem;
   }
 
-  .main-body {
-    height: 100vh;
+  .footer-logo .heading-primary {
+    text-align: center;
+  }
+
+  .footer-logo .small-p {
+    text-align: center;
   }
 
   /*MOBILE MENU */
@@ -336,14 +648,6 @@ body {
     display: grid;
     grid-template-columns: 5fr 1fr;
     align-items: center;
-    border: 1px solid #000;
-  }
-
-  .nav-logo {
-    border-right: 1px solid #000;
-    border-top: none;
-    border-left: none;
-    border-bottom: none;
   }
 
   .header .nav-header {
@@ -366,7 +670,7 @@ body {
     /* transform: translateX(100%); */
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: #f2edeb;
     z-index: 999;
     transition: all 0.75s ease-in;
     opacity: 0;
@@ -393,10 +697,93 @@ body {
 }
 
 /******************************************************/
-/*BELOW 620px (Small desktops) */
+/*BELOW 768px (Small desktops) */
 /******************************************************/
 
-@media (max-width: 39em) {
+@media (max-width: 48em) {
+  .hero {
+    display: flex;
+    flex-direction: column; /* Empilha os itens */
+    height: auto; /* Permite que o conteúdo dite a altura no mobile */
+    min-height: 90dvh; /* Garante que ainda preencha quase a tela toda */
+    gap: 2.4rem; /* Reduzi o gap para ganhar espaço */
+    padding-top: 2rem;
+  }
+
+  /* Invertendo a Ordem */
+  .hero-img {
+    order: 1; /* A imagem sobe */
+    width: 100%;
+    height: 70dvh; /* Limitamos a imagem a 50% da altura da tela */
+    object-fit: contain;
+  }
+
+  .hero-text {
+    order: 2; /* O texto desce */
+    align-self: flex-start; /* Alinhamento à esquerda (mais comum em mobile) */
+    padding-bottom: 4rem;
+  }
+
+  /* Ajuste de fontes para mobile */
+  .heading-secondary,
+  .heading-tertiary {
+    font-size: 3.2rem; /* Um pouco maior que 2.8 para manter o impacto */
+    line-height: 1.1;
+  }
+
+  .hero-img-animated {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s ease-out;
+  }
+
+  .hero-img-animated.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .updates-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    align-items: center;
+    padding: 4rem 0;
+  }
+
+  .updates-image-box {
+    order: 2;
+  }
+
+  .updates-content {
+    width: 100%;
+    order: 1;
+  }
+
+  .categories-section {
+    height: auto;
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .categories-section .heading-tertiary {
+    margin-bottom: 4rem;
+    flex-shrink: 0; /* Impede que o título seja esmagado */
+  }
+
+  .categories-box {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    flex: 1;
+    min-height: 0; /* TRUQUE DE OURO: Permite que os filhos encolham se necessário */
+    align-items: stretch;
+  }
+
+  .categories-box .category-item:nth-child(2) {
+    margin-top: 0rem;
+  }
+
   .footer {
     gap: 4rem;
     padding: 2.4rem 1.6rem;
@@ -419,15 +806,5 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 2.4rem;
-  }
-}
-
-/******************************************************/
-/*BELOW 520px (Small desktops) */
-/******************************************************/
-
-@media (max-width: 32em) {
-  .nav-brand .medium-p {
-    display: none;
   }
 }

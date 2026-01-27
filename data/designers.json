@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Demna Gvasalia",
+    "role": "Designer",
+    "slug": "demna-gvasalia"
+  },
+  {
+    "id": 2,
+    "name": "Jonathan Anderson",
+    "role": "Designer",
+    "slug": "jonathan-anderson"
+  },
+  {
+    "id": 3,
+    "name": "Matthieu Blazy",
+    "role": "Designer",
+    "slug": "matthieu-blazy"
+  },
+  {
+    "id": 4,
+    "name": "Glenn Martens",
+    "role": "Designer",
+    "slug": "glenn-martens"
+  },
+  {
+    "id": 5,
+    "name": "Sabato De Sarno",
+    "role": "Designer",
+    "slug": "sabato-de-Sarno"
+  }
+]
