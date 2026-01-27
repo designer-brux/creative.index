@@ -355,8 +355,10 @@ body::before {
 .hero-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Faz a imagem cobrir o espaço cortando as sobras, sem deformar */
+  object-fit: cover;
   overflow: hidden;
+  object-position: center;
+  display: block;
 }
 
 /******************************************************/
@@ -658,31 +660,43 @@ body::before {
   }
 
   .btn-mobile-nav {
-    display: block;
-    z-index: 1000;
+    z-index: 1001; /* Maior que o 999 do nav-header */
+    border: none;
+    background: none;
+    cursor: pointer;
   }
 
   .nav-header {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     width: 100%;
-    height: 100vh;
-    /* transform: translateX(100%); */
+    height: 100vh; /* Ocupa exatamente a altura da tela */
+    background-color: #f2edeb; /* Cor de fundo do seu site */
+
     display: flex;
     flex-direction: column;
-    background-color: #f2edeb;
+    align-items: center;
+    justify-content: center; /* Centraliza os links verticalmente */
+    gap: 2rem; /* Espaço entre os links */
+
+    /* Garante que o menu comece escondido */
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
     z-index: 999;
-    transition: all 0.75s ease-in;
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
   }
 
   .nav-open .nav-header {
-    opacity: 1;
+    transform: translateX(0);
     visibility: visible;
+    opacity: 1;
     pointer-events: auto;
+  }
+
+  .nav-header a {
+    font-size: 2.4rem;
+    height: auto; /* Impede que o link ocupe altura desnecessária */
+    padding: 1rem;
   }
 
   .nav-open .icon-mobile-nav[name="close-outline"] {
@@ -716,6 +730,9 @@ body::before {
     width: 100%;
     height: 70dvh; /* Limitamos a imagem a 50% da altura da tela */
     object-fit: contain;
+    height: 400px; /* Ou o valor que melhor se adaptar ao seu design */
+    width: 100%;
+    overflow: hidden;
   }
 
   .hero-text {
