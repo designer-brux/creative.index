@@ -7,6 +7,10 @@ function MyApp({ Component, pageProps }) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   if (typeof window !== "undefined") {
+    console.log("Analytics ID carregado:", gaId);
+  }
+
+  if (typeof window !== "undefined") {
     window.gtag =
       window.gtag ||
       function () {
@@ -17,7 +21,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      {gaId && <GoogleAnalytics gaId={gaId} />}
+      {gaId && <GoogleAnalytics gaId={gaId} strategy="afterInteractive" />}
       <Header />
       <Component {...pageProps} />
       <Footer />
