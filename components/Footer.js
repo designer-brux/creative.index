@@ -1,6 +1,15 @@
 import Link from "next/link";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export default function Footer() {
+  const trackFooterClick = (label) => {
+    sendGAEvent({
+      event: "nav_click", // Mesmo nome do Header
+      location: "footer", // Diferencia de onde veio o clique
+      label: label,
+    });
+  };
+
   return (
     <footer className="footer">
       <div className="footer-logo">
@@ -13,9 +22,18 @@ export default function Footer() {
         </p>
       </div>
       <nav className="nav-footer">
-        <Link href="/maison">by.maisons</Link>
-        <Link href="/creatives">by.creatives</Link>
-        <Link href="/contact">contact</Link>
+        <Link href="/maison" onClick={() => trackFooterClick("by_maisons")}>
+          by.maisons
+        </Link>
+        <Link
+          href="/creatives"
+          onClick={() => trackFooterClick("by_creatives")}
+        >
+          by.creatives
+        </Link>
+        <Link href="/contact" onClick={() => trackFooterClick("contact")}>
+          contact
+        </Link>
       </nav>
     </footer>
   );

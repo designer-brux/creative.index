@@ -1,9 +1,19 @@
 import Link from "next/link";
 import { useState } from "react";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false);
   const toggleNav = () => setNavOpen(!navOpen);
+
+  const handleNavClick = (category) => {
+    setNavOpen(false);
+    sendGAEvent({
+      event: "nav_click", // Nome padronizado
+      location: "header", // Parâmetro de localização
+      label: category, // Nome do botão
+    });
+  };
 
   return (
     <header className={`header ${navOpen ? "nav-open" : ""}`}>
@@ -14,13 +24,13 @@ export default function Header() {
       </Link>
 
       <nav className="nav-header">
-        <Link href="/maison" onClick={() => setNavOpen(false)}>
+        <Link href="/maison" onClick={() => handleNavClick("by_maisons")}>
           by.maisons
         </Link>
-        <Link href="/creatives" onClick={() => setNavOpen(false)}>
+        <Link href="/creatives" onClick={() => handleNavClick("by_creatives")}>
           by.creatives
         </Link>
-        <Link href="/contact" onClick={() => setNavOpen(false)}>
+        <Link href="/contact" onClick={() => handleNavClick("contact")}>
           contact
         </Link>
       </nav>
