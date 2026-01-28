@@ -723,28 +723,27 @@ body::before {
 @media (max-width: 48em) {
   .hero {
     display: flex;
-    flex-direction: column; /* Empilha os itens */
-    height: auto; /* Permite que o conteúdo dite a altura no mobile */
-    min-height: 90dvh; /* Garante que ainda preencha quase a tela toda */
-    gap: 2.4rem; /* Reduzi o gap para ganhar espaço */
+    flex-direction: column;
+    height: auto;
+    min-height: 90dvh;
+    gap: 2.4rem;
     padding-top: 2rem;
   }
 
-  /* Invertendo a Ordem */
   .hero-img {
     order: 1;
     width: 100%;
-    height: 50vh; /* Define uma altura fixa para a hero no mobile */
+    height: 50vh;
     min-height: 350px;
   }
 
   .hero-img img {
-    object-fit: cover; /* MUDAR de contain para cover */
+    object-fit: cover;
   }
 
   .hero-text {
-    order: 2; /* O texto desce */
-    align-self: flex-start; /* Alinhamento à esquerda (mais comum em mobile) */
+    order: 2;
+    align-self: flex-start;
     padding-bottom: 4rem;
   }
 
