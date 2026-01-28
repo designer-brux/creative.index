@@ -7,6 +7,7 @@ export default function Header() {
   const toggleNav = () => setNavOpen(!navOpen);
 
   const handleNavClick = (category) => {
+    console.log("Evento disparado para:", category);
     setNavOpen(false);
     sendGAEvent({
       event: "nav_click", // Nome padronizado
