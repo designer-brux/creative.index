@@ -566,6 +566,81 @@ body::before {
 }
 
 /******************************************************/
+/* COOKIES BANNER */
+/******************************************************/
+
+/* Container principal do Banner */
+.cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000; /* Fundo preto sólido para combinar com o projeto */
+  color: #fff;
+  padding: 24px;
+  border-radius: 0px; /* Mantendo o estilo minimalista e retilíneo */
+  z-index: 9999;
+  width: 90%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+  /* Aplicando a fonte do seu projeto */
+  font-family: "General Sans", sans-serif;
+}
+
+.cookie-banner p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* Container dos botões configurado para ocupar 100% */
+.cookie-btns {
+  display: flex;
+  /*flex-direction: column;  Botões um em cima do outro */
+  gap: 10px;
+  width: 100%;
+}
+
+/* Estilo comum para ambos os botões */
+.cookie-btns button {
+  width: 100%; /* Ocupa o espaço inteiro */
+  padding: 12px;
+  cursor: pointer;
+  font-family: "General Sans", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  border: 1px solid #fff;
+}
+
+/* Botão Aceitar - Destaque */
+.btn-accept {
+  background: #fff;
+  color: #000;
+}
+
+.btn-accept:hover {
+  background: #e5e5e5;
+}
+
+/* Botão Recusar - Minimalista */
+.btn-decline {
+  background: transparent;
+  color: #fff;
+}
+
+.btn-decline:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/******************************************************/
 /* BODY CONTENT */
 /******************************************************/
 
