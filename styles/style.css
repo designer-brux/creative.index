@@ -67,12 +67,15 @@ body::before {
   animation: fadePulse 2s infinite ease-in-out;
 }
 
-@keyframes fadePulse {
-  0%,
-  100% {
-    opacity: 0.2;
+.fade-in {
+  animation: fadeInContent 1s ease-in forwards;
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
   }
-  50% {
+  to {
     opacity: 1;
   }
 }
@@ -487,13 +490,15 @@ body::before {
   justify-content: space-between;
   align-items: center;
   padding: 2.4rem 0;
-  border-bottom: 1px solid #1a1a1a;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  mix-blend-mode: multiply;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .update-item:hover {
-  padding-left: 1rem; /* Efeito sutil de deslocamento */
+  padding-left: 1rem;
+  opacity: 0.4;
 }
 
 .update-title {
@@ -644,26 +649,150 @@ body::before {
 /* BODY CONTENT */
 /******************************************************/
 
-.main-body {
+/* Ajuste para a lista de cards */
+.cards-list {
+  list-style: none;
   width: 100%;
-  height: auto;
+}
+
+.update-link-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.update-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.update-category {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #999;
+  margin-top: 0.4rem;
+}
+
+.hover-preview {
+  position: fixed;
+  width: 280px;
+  height: 380px;
+  pointer-events: none;
+  z-index: 1000;
   overflow: hidden;
+  background: #000; /* Fundo preto para o carregamento */
+  display: flex;
+  flex-direction: column;
 }
 
-.body-header {
-  padding: 1.6rem;
+.hover-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.1); /* Estilo editorial forte */
 }
 
-.body-header .back-btn {
+/* O Crédito sutil */
+.image-credit {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-family: "General Sans", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: rgba(241, 236, 234, 0.8); /* Branco bem transparente */
+  letter-spacing: 0.1em;
+  background: rgba(0, 0, 0, 0.5); /* Fundo leve para legibilidade */
+  padding: 2px 6px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Espaçamento superior para não bater no Header fixo */
+.body-content {
+  padding: 4rem 0;
+}
+
+.body-title {
   margin-bottom: 2.4rem;
 }
 
-.body-header h2 {
+.body-title .heading-secondary {
   margin-bottom: 1.6rem;
 }
 
-.body-header .large-p {
-  margin-bottom: 1.6rem;
+/* Garantir que a animação reveal funcione */
+.reveal-text {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.reveal-text.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.search-container {
+  margin: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.search-wrapper {
+  display: flex;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 0.5rem;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-family: "General Sans", sans-serif;
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  outline: none;
+  padding: 1rem 0;
+}
+
+.filter-select {
+  background: transparent;
+  border: none;
+  font-family: "General Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  padding: 0 1rem;
+  color: #1a1a1a;
+}
+
+.results-count {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+}
+
+.no-results {
+  padding: 4rem 0;
+  font-size: 1.6rem;
+  color: #666;
 }
 
 /******************************************************/

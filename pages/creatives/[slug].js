@@ -1,41 +1,53 @@
 import { useRouter } from "next/router";
-import designersData from "../../data/designers.json";
-import Link from "next/link";
+import Head from "next/head";
+import designers from "../../data/designers.json";
 
-export default function DesignerProfile() {
+export default function CreativeProfile() {
   const router = useRouter();
   const { slug } = router.query;
 
   // Busca o designer no JSON que tenha o mesmo slug da URL
-  const designer = designersData.find((d) => d.slug === slug);
+  const designer = designers.find((d) => d.slug === slug);
 
-  // Caso o Next.js ainda esteja carregando ou não encontre o designer
-  if (!designer)
+  if (!designer) {
     return (
-      <div className="container">
-        <p>Loading...</p>
+      <div className="container" style={{ paddingTop: "12rem" }}>
+        Creative not found.
       </div>
     );
+  }
 
   return (
-    <div className="main-body">
-      <header className="body-header">
-        <Link href="/" className="back-btn">
-          <span>&larr;</span> Back to Index
-        </Link>
+    <>
+      <Head>
+        <title>{designer["full-name"]} | creative.index</title>
+      </Head>
 
-        <h2 className="heading-secondary">{designer.name}</h2>
-        <p className="large-p">{designer.role}</p>
-      </header>
-
-      <section className="container">
-        {/* Aqui você pode adicionar mais campos ao seu JSON como 'bio', 'history', etc */}
-        <div className="reveal-text active">
-          <p className="medium-p">
-            Creative legacy and history of {designer.name}...
+      <section
+        className="container"
+        style={{ paddingTop: "12rem", minHeight: "100vh" }}
+      >
+        <div className="body-title">
+          <h2 className="heading-secondary">{designer["full-name"]}</h2>
+          <p className="medium-p" style={{ marginTop: "1rem", color: "#666" }}>
+            {designer.role} — Born in {designer["born-in"]},{" "}
+            {designer["born-at"]}
           </p>
         </div>
+
+        <div
+          style={{
+            marginTop: "4rem",
+            borderTop: "1px solid #1a1a1a",
+            paddingTop: "2rem",
+          }}
+        >
+          <span className="small-p" style={{ color: "#1a1a1a" }}>
+            Last update: {designer.updatedAt}
+          </span>
+          {/* Aqui você entrará com o conteúdo específico da timeline no futuro */}
+        </div>
       </section>
-    </div>
+    </>
   );
 }

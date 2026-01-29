@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Balenciaga",
+    "slug": "balenciaga",
+    "founded": "1919",
+    "origin": "Spain",
+    "website": "https://www.gucci.com/",
+    "current_creative": "Demna",
+    "image": "/images/maisons/balenciaga.jpg",
+    "image_credit": "Balenciaga Archive",
+    "updatedAt": "2026-01-29"
+  },
+  {
+    "id": 2,
+    "name": "Loewe",
+    "slug": "loewe",
+    "founded": "1846",
+    "origin": "Spain",
+    "website": "https://www.gucci.com/",
+    "current_creative": "Jonathan Anderson",
+    "image": "/images/maisons/loewe.jpg",
+    "image_credit": "Loewe Press",
+    "updatedAt": "2026-01-29"
+  },
+  {
+    "id": 3,
+    "name": "Bottega Veneta",
+    "slug": "bottega-veneta",
+    "founded": "1966",
+    "origin": "Italy",
+    "website": "https://www.gucci.com/",
+    "current_creative": "Matthieu Blazy",
+    "image": "/images/maisons/bottega.jpg",
+    "image_credit": "Bottega Veneta Media",
+    "updatedAt": "2025-01-20"
+  },
+  {
+    "id": 4,
+    "name": "Gucci",
+    "slug": "gucci",
+    "founded": "1966",
+    "origin": "Italy",
+    "website": "https://www.gucci.com/",
+    "current_creative": "Matthieu Blazy",
+    "image": "/images/maisons/bottega.jpg",
+    "image_credit": "Bottega Veneta Media",
+    "updatedAt": "2025-01-20"
+  },
+  {
+    "id": 5,
+    "name": "Prada",
+    "slug": "prada",
+    "founded": "1966",
+    "origin": "Italy",
+    "website": "https://www.prada.com/",
+    "current_creative": "Matthieu Blazy",
+    "image": "/images/maisons/bottega.jpg",
+    "image_credit": "Bottega Veneta Media",
+    "updatedAt": "2025-01-20"
+  }
+]
