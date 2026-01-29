@@ -25,7 +25,7 @@ export default function CreativeProfile() {
 
       <section
         className="container"
-        style={{ paddingTop: "12rem", minHeight: "100vh" }}
+        style={{ paddingTop: "4rem", minHeight: "100vh" }}
       >
         <div className="body-title">
           <h2 className="heading-secondary">{designer["full-name"]}</h2>

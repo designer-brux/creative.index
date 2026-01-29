@@ -532,34 +532,70 @@ body::before {
 
 .footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   background: #1a1a1a;
   color: #fff;
-  padding: 4rem 2.4rem;
+  padding: 2.4rem;
+  width: 100%;
+  overflow: hidden;
 }
 
 .footer-logo {
-  max-width: 580px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
+  justify-content: center;
+  margin-bottom: 4rem;
 }
 
 .footer-logo .heading-primary {
   color: #fff;
+  font-size: 4vw; /* O pulo do gato: o tamanho da fonte escala com a largura da tela */
+  line-height: 1;
+  margin: 0;
+  /* text-transform: uppercase; */
+  white-space: nowrap; /* Garante que o texto não quebre linha */
+  width: 100%;
+  text-align: center;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 2.4rem;
+  margin: 2rem 0; /* Espaçamento entre o logo gigante e os links de navegação */
+}
+
+.social-icon {
+  color: #fff;
+  transition: all 0.3s ease;
+  width: 22px;
+  height: 22px;
+  opacity: 0.8;
+}
+
+.footer-socials a:hover .social-icon {
+  opacity: 1;
+  transform: translateY(-3px); /* Pequeno salto ao passar o mouse */
+}
+
+/* Ajuste na nav-footer para não colar nas redes sociais */
+.nav-footer {
+  margin-top: 1rem;
 }
 
 .nav-footer {
   display: flex;
   justify-content: center;
   gap: 2rem;
+  margin-bottom: 4rem;
+  padding: 0 2.4rem;
 }
 
 .nav-footer a:link,
 .nav-footer a:focus,
 .nav-footer a:visited {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: #fff;
   text-decoration: none;

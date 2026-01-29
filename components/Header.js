@@ -24,7 +24,7 @@ export default function Header() {
       </Link>
 
       <nav className="nav-header">
-        <Link href="/maison" onClick={() => handleNavClick("by_maisons")}>
+        <Link href="/maisons" onClick={() => handleNavClick("by_maisons")}>
           by.maisons
         </Link>
         <Link href="/creatives" onClick={() => handleNavClick("by_creatives")}>
