@@ -5,7 +5,39 @@
     "role": "Creative",
     "image": "../imgs/designers/demna.webp",
     "image_credit": "Getty Images",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/demnagram/",
+        "platform": "Instagram"
+      }
+    ],
     "slug": "demna-gvasalia",
+    "career": [
+      {
+        "maison": "Balenciaga",
+        "slug": "balenciaga",
+        "period": "2015 – Present",
+        "current": true
+      },
+      {
+        "maison": "Vetements",
+        "slug": "vetements",
+        "period": "2014 – 2019",
+        "current": false
+      },
+      {
+        "maison": "Louis Vuitton",
+        "slug": "louis-vuitton",
+        "period": "2013 – 2014",
+        "current": false
+      },
+      {
+        "maison": "Maison Margiela",
+        "slug": "maison-margiela",
+        "period": "2009 – 2013",
+        "current": false
+      }
+    ],
     "full-name": "Demna Gvasalia",
     "born-at": "March 25, 1981",
     "born-in": "Georgia",
@@ -17,80 +49,142 @@
     "role": "Creative",
     "image": "../imgs/designers/jonathan_anderson.webp",
     "image_credit": "Scott Trindle for JW Anderson",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/jonathan.anderson/",
+        "platform": "Instagram"
+      }
+    ],
     "slug": "jonathan-anderson",
-    "full-name": "Demna Gvasalia",
+    "full-name": "Jonathan William Anderson",
     "born-at": "March 25, 1981",
-    "born-in": "Georgia",
+    "born-in": "Northern Ireland",
     "updatedAt": "2025-01-20"
   },
   {
     "id": 3,
     "name": "Matthieu Blazy",
     "role": "Creative",
+    "image": "../imgs/designers/matthieu_blazy.avif",
+    "image_credit": "Dana Lixenberg",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/matthieu_blazy/?hl=en",
+        "platform": "Instagram"
+      }
+    ],
     "slug": "matthieu-blazy",
-    "full-name": "Demna Gvasalia",
-    "born-at": "March 25, 1981",
-    "born-in": "Georgia",
-    "updatedAt": "2025-01-20"
+    "full-name": "Matthieu Blazy",
+    "born-at": "June 27, 1984",
+    "born-in": "France",
+    "updatedAt": "2026-01-30"
   },
   {
     "id": 4,
     "name": "Glenn Martens",
     "role": "Creative",
+    "image": "../imgs/designers/glenn_martens.avif",
+    "image_credit": "Arnaud Lajeunie",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/glennmartens/?hl=en",
+        "platform": "Instagram"
+      }
+    ],
     "slug": "glenn-martens",
-    "full-name": "Demna Gvasalia",
-    "born-at": "March 25, 1981",
-    "born-in": "Georgia",
-    "updatedAt": "2025-01-20"
+    "full-name": "Glenn Martens",
+    "born-at": "April 29, 1983",
+    "born-in": "Belgium",
+    "updatedAt": "2026-01-30"
   },
   {
     "id": 5,
     "name": "Sabato De Sarno",
     "role": "Creative",
+    "image": "../imgs/designers/sabato_de_sarno.avif",
+    "image_credit": "Riccardo Raspa",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/sabato.desarno/?hl=en",
+        "platform": "Instagram"
+      }
+    ],
     "slug": "sabato-de-Sarno",
-    "full-name": "Demna Gvasalia",
-    "born-at": "March 25, 1981",
-    "born-in": "Georgia",
+    "full-name": "Sabato De Sarno",
+    "born-at": "1983",
+    "born-in": "Italy",
     "updatedAt": "2025-01-20"
   },
   {
     "id": 6,
     "name": "Maria Grazia Chiuri",
     "role": "Creative",
+    "image": "../imgs/designers/maria_grazia_chiuri.avif",
+    "image_credit": "Brigitte Lacombe",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/mariagraziachiuri/?hl=en",
+        "platform": "Instagram"
+      }
+    ],
     "slug": "maria-grazia-chiuri",
-    "full-name": "Demna Gvasalia",
-    "born-at": "March 25, 1981",
-    "born-in": "Georgia",
+    "full-name": "Maria Grazia Chiuri",
+    "born-at": "February 2, 1964",
+    "born-in": "Italy",
     "updatedAt": "2026-01-25"
   },
   {
     "id": 7,
     "name": "Duran Lantink",
     "role": "Creative",
+    "image": "../imgs/designers/duran-lantink.webp",
+    "image_credit": "Prix LVMH",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/duranlantinkyo/?hl=en",
+        "platform": "Instagram"
+      }
+    ],
     "slug": "duran-lantink",
-    "full-name": "Demna Gvasalia",
-    "born-at": "March 25, 1981",
-    "born-in": "Georgia",
+    "full-name": "Duran Lantink",
+    "born-at": "1987",
+    "born-in": "Netherlands",
     "updatedAt": "2026-01-25"
   },
   {
     "id": 8,
     "name": "Casey Cadwallader",
     "role": "Creative",
+    "image": "../imgs/designers/casey_cadwallader.webp",
+    "image_credit": "Arnaud Lajeunie",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/cadwallader/?hl=en",
+        "platform": "Instagram"
+      }
+    ],
     "slug": "casey-cadwallader",
-    "full-name": "Demna Gvasalia",
-    "born-at": "March 25, 1981",
-    "born-in": "Georgia",
+    "full-name": "Casey Cadwallader",
+    "born-at": "August 15, 1979",
+    "born-in": "United States",
     "updatedAt": "2026-01-29"
   },
   {
     "id": 9,
     "name": "Dario Vitale",
     "role": "Creative",
+    "image": "../imgs/designers/dario_vitale.webp",
+    "image_credit": "Stef Mitchell",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/dario___vitale/?hl=en",
+        "platform": "Instagram"
+      }
+    ],
     "slug": "dario-vitale",
-    "full-name": "Demna Gvasalia",
-    "born-at": "March 25, 1981",
-    "born-in": "Georgia",
+    "full-name": "Dario Vitale",
+    "born-at": "1983",
+    "born-in": "Italy",
     "updatedAt": "2026-01-29"
   }
 ]

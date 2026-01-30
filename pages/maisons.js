@@ -7,17 +7,36 @@ export default function Maisons() {
   const [hoveredMaison, setHoveredMaison] = useState(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [searchTerm, setSearchTerm] = useState("");
-
-  // ADICIONE ESTE ESTADO AQUI:
   const [filterType, setFilterType] = useState("name");
 
   useEffect(() => {
+    const savedSearch = sessionStorage.getItem("maisonsSearch");
+    const savedFilter = sessionStorage.getItem("maisonsFilter");
+    if (savedSearch) setSearchTerm(savedSearch);
+    if (savedFilter) setFilterType(savedFilter);
+
     const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // LÓGICA DE FILTRO ATUALIZADA:
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    sessionStorage.setItem("maisonsSearch", value);
+  };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+    sessionStorage.setItem("maisonsSearch", "");
+  };
+
+  const handleFilterChange = (e) => {
+    const value = e.target.value;
+    setFilterType(value);
+    sessionStorage.setItem("maisonsFilter", value);
+  };
+
   const filteredMaisons = maisons.filter((m) => {
     const valueToSearch = filterType === "name" ? m.name : m.origin;
     return valueToSearch.toLowerCase().includes(searchTerm.toLowerCase());
@@ -29,7 +48,7 @@ export default function Maisons() {
         <title>by.maisons | creative.index</title>
       </Head>
 
-      <section className="container">
+      <section className="container" style={{ minHeight: "100vh" }}>
         <div className="body-content">
           <div className="body-title">
             <h2 className="heading-secondary">by.maisons</h2>
@@ -41,25 +60,34 @@ export default function Maisons() {
 
           <div className="search-container">
             <div className="search-wrapper">
-              <input
-                type="text"
-                placeholder={`Search by ${filterType === "name" ? "maison" : "country"}...`}
-                className="search-input"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
+              <div className="search-input-box">
+                {searchTerm && (
+                  <button
+                    className="clear-search-btn"
+                    onClick={clearSearch}
+                    title="Clear search"
+                  >
+                    &times;
+                  </button>
+                )}
+                <input
+                  type="text"
+                  placeholder={`Search by ${filterType === "name" ? "maison" : "country"}...`}
+                  className="search-input"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                />
+              </div>
 
-              {/* ADICIONE ESTE SELECT AQUI: */}
               <select
                 className="filter-select"
                 value={filterType}
-                onChange={(e) => setFilterType(e.target.value)}
+                onChange={handleFilterChange}
               >
                 <option value="name">Name</option>
                 <option value="origin">Country</option>
               </select>
             </div>
-
             <span className="results-count">
               {filteredMaisons.length} houses listed
             </span>

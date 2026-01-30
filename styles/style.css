@@ -232,23 +232,37 @@ body::before {
 /* BUTTONS */
 /******************************************************/
 
-.back-btn:link,
-.back-btn:focus,
-.back-btn:visited {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #000;
-  text-decoration: none;
+.back-btn {
+  display: inline-flex; /* Garante que o botão se comporte como texto mas aceite flex */
+  align-items: center; /* Alinhamento vertical centralizado */
+  justify-content: flex-start;
+  gap: 0.8rem; /* Espaço fixo entre seta e texto */
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 3.2rem;
   cursor: pointer;
-  transition: 0.3s ease;
+  font-family: "General Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
 }
 
-.back-btn:hover,
-.back-btn:active {
-  color: #555;
+.back-arrow {
+  font-size: 2rem;
+  display: flex; /* Ajuda a remover espaços fantasmas de fontes */
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.back-btn:hover {
+  opacity: 0.6;
+}
+
+.back-btn:hover .back-arrow {
+  transform: translateX(-5px); /* Seta move para a esquerda no hover */
 }
 
 /******************************************************/
@@ -831,6 +845,156 @@ body::before {
   color: #666;
 }
 
+.search-input-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.clear-search-btn {
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: #1a1a1a;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 1.2rem; /* Espaço entre o X e o texto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.clear-search-btn:hover {
+  opacity: 0.5;
+}
+
+/* Garante que o input não tenha padding extra agora que tem o botão */
+.search-input {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+/******************************************************/
+/*CREATIVE TIMELINE */
+/******************************************************/
+/* Layout Split Screen */
+.creative-profile-layout {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 4rem; /* Altura do seu Header */
+}
+
+/* Coluna de Informação (Scroll) */
+.profile-info-column {
+  width: 50%;
+  padding: 0rem 4rem 4rem 2.4rem;
+  overflow-y: auto;
+}
+
+/* Coluna de Imagem (Fixa) */
+.profile-image-column {
+  width: 50%;
+  height: calc(100vh - 80px);
+  position: sticky;
+  top: 80px;
+  background: #eee;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+}
+
+.designer-full-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%); /* Mantendo o padrão do projeto */
+  object-position: top center;
+  display: block;
+}
+
+/* Tipografia do Perfil */
+.profile-name {
+  font-size: clamp(4rem, 6vw, 8rem);
+  line-height: 0.9;
+  margin: 2rem 0 4rem 0;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.profile-meta {
+  margin-bottom: 6rem;
+  font-size: 1.4rem;
+  line-height: 1.8;
+}
+
+.profile-meta strong {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.social-link {
+  text-decoration: underline;
+  color: inherit;
+}
+
+/* Timeline Cards */
+.timeline-title {
+  font-size: 2.4rem;
+  margin-bottom: 3rem;
+  font-weight: 500;
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #1a1a1a;
+}
+
+.timeline-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 0;
+  border-bottom: 1px solid #1a1a1a;
+  text-decoration: none;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.card-maison {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.card-period {
+  font-size: 1.4rem;
+  color: #666;
+}
+
+/* Interação do Card (Seta e Opacidade) */
+.card-arrow {
+  font-size: 2.4rem;
+  /*opacity: 0.2; Visível mas suave por padrão */
+  transition: all 0.3s ease;
+  transform: translateX(-10px);
+}
+
+.timeline-card:hover {
+  padding-left: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.timeline-card:hover .card-arrow {
+  opacity: 0.4;
+  transform: translateX(0);
+}
+
 /******************************************************/
 /*BELOW 1024px (Small desktops) */
 /******************************************************/
@@ -953,6 +1117,21 @@ body::before {
     font-size: 2.4rem;
     height: auto; /* Impede que o link ocupe altura desnecessária */
     padding: 1rem;
+  }
+
+  .creative-profile-layout {
+    flex-direction: column;
+  }
+  .profile-info-column,
+  .profile-image-column {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+  }
+  .profile-image-column {
+    order: -1; /* Imagem sobe no mobile */
+    height: 60vh;
   }
 }
 

@@ -25,10 +25,15 @@ export default function MaisonProfile() {
         className="container"
         style={{ paddingTop: "4rem", minHeight: "100vh" }}
       >
+        <button onClick={() => router.back()} className="back-btn">
+          <span className="back-arrow">&larr;</span> back
+        </button>
+
         <div className="body-title">
           <h2 className="heading-secondary">{maison.name}</h2>
           <p className="medium-p" style={{ marginTop: "1rem", color: "#666" }}>
             Founded in {maison.origin}, {maison.founded}. <br />
+            Website: {maison.website} <br />
             Current Creative Direction:{" "}
             <strong>{maison.current_creative}</strong>
           </p>

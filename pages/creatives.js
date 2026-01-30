@@ -4,13 +4,17 @@ import { useState, useEffect } from "react";
 import designers from "../data/designers.json";
 
 export default function Creatives() {
-  // Estado para controlar qual imagem exibir e a posição do mouse
-  const [hoveredDesigner, setHoveredDesigner] = useState(null); // Mudamos de hoveredImage para hoveredDesigner
+  const [hoveredDesigner, setHoveredDesigner] = useState(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState("name");
 
   useEffect(() => {
+    const savedSearch = sessionStorage.getItem("creativesSearch");
+    const savedFilter = sessionStorage.getItem("creativesFilter");
+    if (savedSearch) setSearchTerm(savedSearch);
+    if (savedFilter) setFilterType(savedFilter);
+
     const handleMouseMove = (e) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
@@ -18,7 +22,23 @@ export default function Creatives() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Lógica de Filtragem em Tempo Real
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    sessionStorage.setItem("creativesSearch", value);
+  };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+    sessionStorage.setItem("creativesSearch", "");
+  };
+
+  const handleFilterChange = (e) => {
+    const value = e.target.value;
+    setFilterType(value);
+    sessionStorage.setItem("creativesFilter", value);
+  };
+
   const filteredDesigners = designers.filter((designer) => {
     const valueToSearch = designer[filterType]?.toLowerCase() || "";
     return valueToSearch.includes(searchTerm.toLowerCase());
@@ -30,7 +50,7 @@ export default function Creatives() {
         <title>by.creatives | creative.index</title>
       </Head>
 
-      <section className="container">
+      <section className="container" style={{ minHeight: "100vh" }}>
         <div className="body-content">
           <div className="body-title">
             <h2 className="heading-secondary">by.creatives</h2>
@@ -40,20 +60,32 @@ export default function Creatives() {
             </span>
           </div>
 
-          {/* CAMPO DE BUSCA E FILTRO */}
           <div className="search-container">
             <div className="search-wrapper">
-              <input
-                type="text"
-                placeholder={`Search by ${filterType === "name" ? "name" : "country"}...`}
-                className="search-input"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
+              {/* Ícone de Limpar (X) condicional */}
+              <div className="search-input-box">
+                {searchTerm && (
+                  <button
+                    className="clear-search-btn"
+                    onClick={clearSearch}
+                    title="Clear search"
+                  >
+                    &times;
+                  </button>
+                )}
+                <input
+                  type="text"
+                  placeholder={`Search by ${filterType === "name" ? "name" : "country"}...`}
+                  className="search-input"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                />
+              </div>
+
               <select
                 className="filter-select"
                 value={filterType}
-                onChange={(e) => setFilterType(e.target.value)}
+                onChange={handleFilterChange}
               >
                 <option value="name">Name</option>
                 <option value="born-in">Country</option>
@@ -100,14 +132,9 @@ export default function Creatives() {
       {hoveredDesigner && (
         <div
           className="hover-preview"
-          style={{
-            left: `${mousePos.x + 20}px`,
-            top: `${mousePos.y + 20}px`,
-          }}
+          style={{ left: `${mousePos.x + 20}px`, top: `${mousePos.y + 20}px` }}
         >
           <img src={hoveredDesigner.image} alt={hoveredDesigner.name} />
-
-          {/* Exibe o crédito apenas se ele existir no JSON */}
           {hoveredDesigner.image_credit && (
             <span className="image-credit">
               Photo: {hoveredDesigner.image_credit}
