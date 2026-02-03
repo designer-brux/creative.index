@@ -416,11 +416,6 @@ body::before {
   position: relative; /* Necessário para posicionar as labels em relação ao item */
 }
 
-.categories-box .category-item:nth-child(2) {
-  margin-top: 10rem; /* Empurra a imagem da direita para baixo */
-  flex: 0 0 55%;
-}
-
 /* 1. Primeiro, garantimos que o wrapper esconda o zoom da imagem */
 .category-img-wrapper {
   width: 100%;
@@ -1000,12 +995,58 @@ body::before {
 /******************************************************/
 
 @media (max-width: 64em) {
+  .hero-img {
+    flex: 1;
+  }
+
+  .hero-text {
+    flex: 1;
+  }
+
   .heading-secondary {
     font-size: 4rem;
   }
 
   .heading-tertiary {
     font-size: 4rem;
+  }
+
+  .categories-section {
+    height: auto;
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .categories-section .heading-tertiary {
+    margin-bottom: 4rem;
+    flex-shrink: 0; /* Impede que o título seja esmagado */
+  }
+
+  .categories-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem; /* Aumentado para dar espaço às labels */
+    width: 100%;
+  }
+
+  .category-item {
+    height: 50vh; /* Cada imagem ocupará metade da altura da tela no mobile */
+    min-height: 400px;
+    position: relative;
+  }
+
+  .category-img-wrapper {
+    width: 100%;
+    height: 100%; /* Agora ele herda os 50vh do pai */
+    position: relative;
+    overflow: hidden;
+  }
+
+  .category-label {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    top: -1rem;
   }
 }
 
@@ -1048,11 +1089,23 @@ body::before {
     padding: 2.4rem 1.6rem;
   }
 
-  .footer-logo .heading-primary {
-    text-align: center;
+  .footer-logo {
+    margin-bottom: 2.4rem;
   }
 
-  .footer-logo .small-p {
+  .footer-logo .heading-primary {
+    font-size: 4rem;
+  }
+
+  .footer-socials {
+    margin: 0;
+  }
+
+  .nav-footer {
+    margin: 0rem;
+  }
+
+  .footer-text .small-p {
     text-align: center;
   }
 
@@ -1121,7 +1174,9 @@ body::before {
 
   .creative-profile-layout {
     flex-direction: column;
+    padding-top: 0rem;
   }
+
   .profile-info-column,
   .profile-image-column {
     width: 100%;
@@ -1129,9 +1184,14 @@ body::before {
     position: relative;
     top: 0;
   }
+
   .profile-image-column {
     order: -1; /* Imagem sobe no mobile */
     height: 60vh;
+  }
+
+  .profile-info-column {
+    margin-top: 3.2rem;
   }
 }
 
@@ -1220,10 +1280,6 @@ body::before {
     flex: 1;
     min-height: 0; /* TRUQUE DE OURO: Permite que os filhos encolham se necessário */
     align-items: stretch;
-  }
-
-  .categories-box .category-item:nth-child(2) {
-    margin-top: 0rem;
   }
 
   .footer {

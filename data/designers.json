@@ -56,6 +56,32 @@
       }
     ],
     "slug": "jonathan-anderson",
+    "career": [
+      {
+        "maison": "Gucci",
+        "slug": "gucci",
+        "period": "2015 – Present",
+        "current": true
+      },
+      {
+        "maison": "Loewe",
+        "slug": "loewe",
+        "period": "2014 – 2019",
+        "current": false
+      },
+      {
+        "maison": "Louis Vuitton",
+        "slug": "louis-vuitton",
+        "period": "2013 – 2014",
+        "current": false
+      },
+      {
+        "maison": "Maison Margiela",
+        "slug": "maison-margiela",
+        "period": "2009 – 2013",
+        "current": false
+      }
+    ],
     "full-name": "Jonathan William Anderson",
     "born-at": "March 25, 1981",
     "born-in": "Northern Ireland",
@@ -74,6 +100,32 @@
       }
     ],
     "slug": "matthieu-blazy",
+    "career": [
+      {
+        "maison": "Balenciaga",
+        "slug": "balenciaga",
+        "period": "2015 – Present",
+        "current": true
+      },
+      {
+        "maison": "Vetements",
+        "slug": "vetements",
+        "period": "2014 – 2019",
+        "current": false
+      },
+      {
+        "maison": "Louis Vuitton",
+        "slug": "louis-vuitton",
+        "period": "2013 – 2014",
+        "current": false
+      },
+      {
+        "maison": "Maison Margiela",
+        "slug": "maison-margiela",
+        "period": "2009 – 2013",
+        "current": false
+      }
+    ],
     "full-name": "Matthieu Blazy",
     "born-at": "June 27, 1984",
     "born-in": "France",
@@ -92,6 +144,32 @@
       }
     ],
     "slug": "glenn-martens",
+    "career": [
+      {
+        "maison": "Balenciaga",
+        "slug": "balenciaga",
+        "period": "2015 – Present",
+        "current": true
+      },
+      {
+        "maison": "Vetements",
+        "slug": "vetements",
+        "period": "2014 – 2019",
+        "current": false
+      },
+      {
+        "maison": "Louis Vuitton",
+        "slug": "louis-vuitton",
+        "period": "2013 – 2014",
+        "current": false
+      },
+      {
+        "maison": "Maison Margiela",
+        "slug": "maison-margiela",
+        "period": "2009 – 2013",
+        "current": false
+      }
+    ],
     "full-name": "Glenn Martens",
     "born-at": "April 29, 1983",
     "born-in": "Belgium",
@@ -110,6 +188,32 @@
       }
     ],
     "slug": "sabato-de-Sarno",
+    "career": [
+      {
+        "maison": "Balenciaga",
+        "slug": "balenciaga",
+        "period": "2015 – Present",
+        "current": true
+      },
+      {
+        "maison": "Vetements",
+        "slug": "vetements",
+        "period": "2014 – 2019",
+        "current": false
+      },
+      {
+        "maison": "Louis Vuitton",
+        "slug": "louis-vuitton",
+        "period": "2013 – 2014",
+        "current": false
+      },
+      {
+        "maison": "Maison Margiela",
+        "slug": "maison-margiela",
+        "period": "2009 – 2013",
+        "current": false
+      }
+    ],
     "full-name": "Sabato De Sarno",
     "born-at": "1983",
     "born-in": "Italy",
@@ -128,6 +232,32 @@
       }
     ],
     "slug": "maria-grazia-chiuri",
+    "career": [
+      {
+        "maison": "Balenciaga",
+        "slug": "balenciaga",
+        "period": "2015 – Present",
+        "current": true
+      },
+      {
+        "maison": "Vetements",
+        "slug": "vetements",
+        "period": "2014 – 2019",
+        "current": false
+      },
+      {
+        "maison": "Louis Vuitton",
+        "slug": "louis-vuitton",
+        "period": "2013 – 2014",
+        "current": false
+      },
+      {
+        "maison": "Maison Margiela",
+        "slug": "maison-margiela",
+        "period": "2009 – 2013",
+        "current": false
+      }
+    ],
     "full-name": "Maria Grazia Chiuri",
     "born-at": "February 2, 1964",
     "born-in": "Italy",
@@ -146,6 +276,32 @@
       }
     ],
     "slug": "duran-lantink",
+    "career": [
+      {
+        "maison": "Balenciaga",
+        "slug": "balenciaga",
+        "period": "2015 – Present",
+        "current": true
+      },
+      {
+        "maison": "Vetements",
+        "slug": "vetements",
+        "period": "2014 – 2019",
+        "current": false
+      },
+      {
+        "maison": "Louis Vuitton",
+        "slug": "louis-vuitton",
+        "period": "2013 – 2014",
+        "current": false
+      },
+      {
+        "maison": "Maison Margiela",
+        "slug": "maison-margiela",
+        "period": "2009 – 2013",
+        "current": false
+      }
+    ],
     "full-name": "Duran Lantink",
     "born-at": "1987",
     "born-in": "Netherlands",
@@ -164,6 +320,32 @@
       }
     ],
     "slug": "casey-cadwallader",
+    "career": [
+      {
+        "maison": "Balenciaga",
+        "slug": "balenciaga",
+        "period": "2015 – Present",
+        "current": true
+      },
+      {
+        "maison": "Vetements",
+        "slug": "vetements",
+        "period": "2014 – 2019",
+        "current": false
+      },
+      {
+        "maison": "Louis Vuitton",
+        "slug": "louis-vuitton",
+        "period": "2013 – 2014",
+        "current": false
+      },
+      {
+        "maison": "Maison Margiela",
+        "slug": "maison-margiela",
+        "period": "2009 – 2013",
+        "current": false
+      }
+    ],
     "full-name": "Casey Cadwallader",
     "born-at": "August 15, 1979",
     "born-in": "United States",
@@ -182,6 +364,32 @@
       }
     ],
     "slug": "dario-vitale",
+    "career": [
+      {
+        "maison": "Balenciaga",
+        "slug": "balenciaga",
+        "period": "2015 – Present",
+        "current": true
+      },
+      {
+        "maison": "Vetements",
+        "slug": "vetements",
+        "period": "2014 – 2019",
+        "current": false
+      },
+      {
+        "maison": "Louis Vuitton",
+        "slug": "louis-vuitton",
+        "period": "2013 – 2014",
+        "current": false
+      },
+      {
+        "maison": "Maison Margiela",
+        "slug": "maison-margiela",
+        "period": "2009 – 2013",
+        "current": false
+      }
+    ],
     "full-name": "Dario Vitale",
     "born-at": "1983",
     "born-in": "Italy",

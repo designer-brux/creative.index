@@ -5,9 +5,15 @@
     "slug": "balenciaga",
     "founded": "1919",
     "origin": "Spain",
-    "website": "https://www.gucci.com/",
+    "website": "https://www.balenciaga.com/",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/balenciaga/",
+        "platform": "Instagram"
+      }
+    ],
     "current_creative": "Demna",
-    "image": "/images/maisons/balenciaga.jpg",
+    "image": "../imgs/maisons/balenciaga.webp",
     "image_credit": "Balenciaga Archive",
     "updatedAt": "2026-01-29"
   },
@@ -19,7 +25,7 @@
     "origin": "Spain",
     "website": "https://www.gucci.com/",
     "current_creative": "Jonathan Anderson",
-    "image": "/images/maisons/loewe.jpg",
+    "image": "../imgs/maisons/loewe.webp",
     "image_credit": "Loewe Press",
     "updatedAt": "2026-01-29"
   },
