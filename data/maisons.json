@@ -12,7 +12,6 @@
         "platform": "Instagram"
       }
     ],
-    "current_creative": "Demna",
     "image": "../imgs/maisons/balenciaga.webp",
     "image_credit": "Balenciaga Archive",
     "updatedAt": "2026-01-29"
@@ -23,8 +22,13 @@
     "slug": "loewe",
     "founded": "1846",
     "origin": "Spain",
-    "website": "https://www.gucci.com/",
-    "current_creative": "Jonathan Anderson",
+    "website": "https://www.loewe.com/",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/loewe",
+        "platform": "Instagram"
+      }
+    ],
     "image": "../imgs/maisons/loewe.webp",
     "image_credit": "Loewe Press",
     "updatedAt": "2026-01-29"
@@ -35,34 +39,49 @@
     "slug": "bottega-veneta",
     "founded": "1966",
     "origin": "Italy",
-    "website": "https://www.gucci.com/",
-    "current_creative": "Matthieu Blazy",
-    "image": "/images/maisons/bottega.jpg",
-    "image_credit": "Bottega Veneta Media",
+    "website": "https://www.bottegaveneta.com/",
+    "social-media": [
+      {
+        "url": "",
+        "platform": ""
+      }
+    ],
+    "image": "../imgs/maisons/bottega-veneta.webp",
+    "image_credit": "Bottega Veneta Website",
     "updatedAt": "2025-01-20"
   },
   {
     "id": 4,
     "name": "Gucci",
     "slug": "gucci",
-    "founded": "1966",
+    "founded": "1921",
     "origin": "Italy",
     "website": "https://www.gucci.com/",
-    "current_creative": "Matthieu Blazy",
-    "image": "/images/maisons/bottega.jpg",
-    "image_credit": "Bottega Veneta Media",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/gucci/",
+        "platform": "Instagram"
+      }
+    ],
+    "image": "../imgs/maisons/gucci.webp",
+    "image_credit": "Gucci Website",
     "updatedAt": "2025-01-20"
   },
   {
     "id": 5,
     "name": "Prada",
     "slug": "prada",
-    "founded": "1966",
+    "founded": "1913",
     "origin": "Italy",
     "website": "https://www.prada.com/",
-    "current_creative": "Matthieu Blazy",
-    "image": "/images/maisons/bottega.jpg",
-    "image_credit": "Bottega Veneta Media",
+    "social-media": [
+      {
+        "url": "https://www.instagram.com/prada/",
+        "platform": "Instagram"
+      }
+    ],
+    "image": "../imgs/maisons/prada.webp",
+    "image_credit": "Prada Website",
     "updatedAt": "2025-01-20"
   }
 ]
