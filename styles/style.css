@@ -358,181 +358,327 @@ body::before {
 /* HERO */
 /******************************************************/
 
-.hero {
-  padding: 2.4rem 0;
+.hero-modern {
+  width: 100%;
+  min-height: 100vh; /* Garante que ocupe a tela toda */
   display: flex;
-  flex-direction: row;
-  gap: 8rem;
-  height: 80vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centraliza verticalmente todo o bloco */
+  padding-top: 8rem;
 }
 
-.hero-text {
-  align-self: flex-end;
-}
-
-.hero-img {
+.hero-centered-wrapper {
+  position: relative;
   width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: center; /* Centraliza a máscara horizontalmente */
+  align-items: center;
+}
+
+/* MÁSCARA PADRÃO CENTRALIZADA */
+.hero-slider-mask {
+  width: 450px;
+  height: 600px;
+  position: relative;
   overflow: hidden;
-  display: block;
+  z-index: 2;
+  background: #e5e5e5;
 }
 
-.hero-img img {
+.hero-img-masked {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Preenche o espaço sem deformar */
-  object-position: center; /* Centraliza o foco da imagem */
-  display: block;
+  object-fit: cover;
+  object-position: top center;
+  filter: grayscale(100%);
+}
+
+/* TEXTO OVERLAY - POSICIONAMENTO EM RELAÇÃO AO CENTRO */
+.hero-content-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Centraliza o container de texto no meio exato */
+  width: 100%;
+  max-width: 1200px; /* Limite para o texto não colar nas bordas da tela */
+  display: flex;
+  justify-content: space-between; /* Joga um texto para cada lado */
+  padding: 0 4rem;
+  z-index: 1; /* Fica atrás da imagem */
+  pointer-events: none;
+}
+
+.overlay-text {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  white-space: nowrap; /* ADICIONADO: Impede que o texto quebre em telas menores */
+}
+
+/* Nova animação suave para a troca de palavras */
+.fade-text-anim {
+  display: inline-block;
+  animation: slideTextUp 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes slideTextUp {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  z-index: 2; /* Garante que o slide ativo fique por cima dos apagados */
+}
+
+/* Tipografia com mais respiro */
+.hero-text-modern {
+  padding: 20rem 4rem;
+  max-width: 1100px; /* Texto um pouco mais estreito para melhor leitura */
+}
+
+.massive-heading {
+  font-size: clamp(2.4rem, 4vw, 5.6rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #1a1a1a;
 }
 
 /******************************************************/
 /* CATEGORIAS */
 /******************************************************/
 
-.categories-section {
-  height: 100dvh; /* Altura dinâmica */
-  padding: 8rem 0;
+.categories-modern {
+  width: 100%;
+  padding-bottom: 15rem; /* Aumentado para dar mais respiro em relação às outras seções */
   display: flex;
   flex-direction: column;
-}
-
-.categories-section .heading-tertiary {
-  margin-bottom: 4rem;
-  flex-shrink: 0; /* Impede que o título seja esmagado */
-}
-
-.categories-box {
-  display: flex;
-  gap: 8rem;
-  flex: 1;
-  min-height: 0; /* TRUQUE DE OURO: Permite que os filhos encolham se necessário */
-  align-items: stretch;
-}
-
-.category-item {
-  display: flex;
-  flex-direction: column; /* Organiza label e imagem verticalmente */
-  width: 100%;
-  position: relative; /* Necessário para posicionar as labels em relação ao item */
-}
-
-/* 1. Primeiro, garantimos que o wrapper esconda o zoom da imagem */
-.category-img-wrapper {
-  width: 100%;
-  flex: 1;
+  gap: 20rem; /* Aumentado o espaçamento entre o bloco Maisons e o bloco Creatives */
   overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.03);
 }
 
-/* 2. Adicionamos a transição na imagem */
-.category-img {
+.cat-modern-item {
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #1a1a1a;
+  padding: 0 4rem;
+}
+
+/* --- TIPOGRAFIA ESTOURADA --- */
+.cat-text-wrapper {
+  position: relative;
+  z-index: 2; /* Texto fica POR CIMA da imagem */
+  display: flex;
+  flex-direction: column;
+  mix-blend-mode: difference; /* O PULO DO GATO: Inverte a cor se bater na imagem/fundo */
+  color: #fff; /* Começa branco para o blend mode funcionar bem no escuro, ou ajuste conforme fundo */
+}
+
+/* Se o fundo do site é claro (#f2edeb), usamos mix-blend-mode ou cor sólida escura */
+.cat-text-wrapper {
+  mix-blend-mode: normal;
+  color: #1a1a1a;
+}
+
+.cat-label-small {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 2.4rem; /* Aumentado: cria o respiro entre a label e o texto gigante */
+  display: block;
+}
+
+.cat-huge-text {
+  font-size: 13vw;
+  line-height: 0.8;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.align-right {
+  align-items: flex-end;
+  margin-left: auto; /* Empurra para a direita */
+  text-align: right;
+}
+
+/* Hover Effect no Texto */
+.cat-modern-item:hover .cat-huge-text {
+  transform: translateX(20px); /* Move levemente */
+  /* color: transparent;
+  -webkit-text-stroke: 2px #1a1a1a;  Opcional: vira outline no hover */
+  opacity: 0.7;
+}
+
+.cat-modern-item:hover .align-right .cat-huge-text {
+  transform: translateX(-20px);
+}
+
+/* --- IMAGEM FLUTUANTE --- */
+.cat-img-floating {
+  position: absolute;
+  /* Definindo tamanho fixo e igual para ambas */
+  width: 30vw;
+  height: 40vw;
+  max-width: 500px;
+  max-height: 650px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0.8;
+}
+
+.cat-img-floating.right {
+  right: 5%;
+  top: 10%;
+}
+
+.cat-img-floating.left {
+  left: 5%;
+  top: 10%;
+}
+
+.cat-img-fill {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Transição suave e elegante */
+  filter: grayscale(100%);
+  transition: transform 1.2s ease;
 }
 
-.category-item:hover .category-img {
-  transform: scale(1.08);
+/* Hover Effect na Imagem */
+.cat-modern-item:hover .cat-img-floating {
+  opacity: 1;
+  width: 32vw; /* Crescimento sutil e igual */
 }
 
-/* 3. Adicionamos a transição na etiqueta */
-.category-label {
-  background-color: #1a1a1a;
-  color: #fff;
-  padding: 1.2rem 2.4rem;
-  font-size: 1.8rem;
-  font-weight: 500;
-  position: absolute;
-  z-index: 10;
-  transition: all 0.3s ease;
-  pointer-events: none; /* Evita que a etiqueta atrapalhe o hover na imagem */
-}
-
-/* Ajuste das posições para o efeito de "overlap" */
-.label-left {
-  top: -1.5rem; /* Sobe um pouco para fora da imagem */
-  /* left: -1rem; */
-}
-
-.label-right {
-  top: -1.5rem;
-  right: 0rem;
+.cat-modern-item:hover .cat-img-fill {
+  transform: scale(1.1);
+  filter: grayscale(0%);
 }
 
 /******************************************************/
 /* UPDATES */
 /******************************************************/
 
-.updates-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Divide em duas colunas iguais */
-  gap: 8rem;
-  align-items: center;
-  padding: 8rem 0;
+.updates-modern {
+  padding: 15rem 0;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
 }
 
-/* Tratamento da Imagem */
-.updates-image-box {
-  width: 100%;
-  height: 100%; /* Ocupa a altura total da grid */
+.updates-header {
+  margin-bottom: 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-.updates-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Crucial para não distorcer a foto */
-  display: block;
-}
-
-/* Lista de Updates */
-.updates-list {
+.updates-modern-list {
   list-style: none;
-  margin-top: 2.4rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.update-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2.4rem 0;
+.update-modern-item {
   border-bottom: 1px solid rgba(26, 26, 26, 0.1);
-  mix-blend-mode: multiply;
-  cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.update-item:hover {
-  padding-left: 1rem;
-  opacity: 0.4;
-}
-
-.update-title {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-}
-
-.update-category {
-  font-size: 1.6rem;
-  color: #666;
-}
-
-.update-arrow {
-  font-size: 2.4rem;
-  font-weight: 300;
-}
-
-.update-link-wrapper {
+.update-modern-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  padding: 4rem 0;
   text-decoration: none;
   color: inherit;
+  transition: padding 0.4s ease;
+}
+
+.update-main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.update-type-tag {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+}
+
+.update-modern-title {
+  font-size: 4.2rem; /* Tipografia maior e mais impactante */
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.update-meta-info {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.update-role-text {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.update-modern-arrow {
+  font-size: 3.2rem;
+  font-weight: 300;
+  transition: transform 0.4s ease;
+}
+
+/* --- HOVER EFFECTS --- */
+
+.update-modern-item:hover {
+  background-color: #fff; /* Leve destaque de fundo */
+  padding: 0 2rem;
+}
+
+.update-modern-item:hover .update-modern-title {
+  transform: translateX(10px);
+}
+
+.update-modern-item:hover .update-modern-arrow {
+  transform: rotate(45deg);
 }
 
 /******************************************************/
@@ -545,7 +691,7 @@ body::before {
   align-items: center;
   background: #1a1a1a;
   color: #fff;
-  padding: 2.4rem;
+  padding: 8rem 2.4rem 2.4rem 2.4rem;
   width: 100%;
   overflow: hidden;
 }
@@ -559,11 +705,10 @@ body::before {
 
 .footer-logo .heading-primary {
   color: #fff;
-  font-size: 4vw; /* O pulo do gato: o tamanho da fonte escala com a largura da tela */
+  font-size: 4vw;
   line-height: 1;
   margin: 0;
-  /* text-transform: uppercase; */
-  white-space: nowrap; /* Garante que o texto não quebre linha */
+  white-space: nowrap;
   width: 100%;
   text-align: center;
 }
@@ -572,7 +717,7 @@ body::before {
   display: flex;
   justify-content: center;
   gap: 2.4rem;
-  margin: 2rem 0; /* Espaçamento entre o logo gigante e os links de navegação */
+  margin: 2rem 0;
 }
 
 .social-icon {
@@ -995,14 +1140,6 @@ body::before {
 /******************************************************/
 
 @media (max-width: 64em) {
-  .hero-img {
-    flex: 1;
-  }
-
-  .hero-text {
-    flex: 1;
-  }
-
   .heading-secondary {
     font-size: 4rem;
   }
@@ -1066,20 +1203,56 @@ body::before {
     height: 50vh;
   }
 
-  .hero-img {
-    flex: 1;
-  }
-
-  .hero-text {
-    flex: 1;
-  }
-
   .heading-secondary {
     font-size: 3.2rem;
   }
 
   .heading-tertiary {
     font-size: 3.2rem;
+  }
+
+  .hero-content-overlay {
+    display: none;
+  }
+
+  .categories-modern {
+    gap: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .cat-modern-item {
+    flex-direction: column;
+    justify-content: center;
+    min-height: auto;
+    gap: 2rem;
+    padding: 0 2rem;
+  }
+
+  .cat-huge-text {
+    font-size: 14vw;
+  }
+
+  /* No mobile, a imagem deixa de ser absoluta para empilhar */
+  .cat-img-floating {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    top: auto;
+    transform: none;
+    right: auto !important;
+    left: auto !important;
+    margin-top: 2rem;
+  }
+
+  .align-right {
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 0;
+  }
+
+  /* Inverter ordem para o segundo item (Texto primeiro) */
+  .cat-modern-item:nth-child(2) {
+    flex-direction: column-reverse;
   }
 
   .footer {
@@ -1200,86 +1373,50 @@ body::before {
 /******************************************************/
 
 @media (max-width: 48em) {
-  .hero {
-    display: flex;
+  .hero-modern {
+    padding: 2rem 0;
+    min-height: 85vh; /* Ajuste para não sobrar muito espaço vazio no mobile */
+  }
+
+  .hero-centered-wrapper {
+    padding: 0;
+  }
+
+  .hero-slider-mask {
+    width: 280px;
+    height: 400px;
+  }
+
+  .hero-text-modern {
+    padding: 10rem 2rem;
+  }
+
+  .massive-heading {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .updates-modern {
+    padding: 8rem 0;
+  }
+
+  .updates-header {
     flex-direction: column;
-    height: auto;
-    min-height: 90dvh;
-    gap: 2.4rem;
-    padding-top: 2rem;
+    align-items: flex-start;
+    gap: 2rem;
   }
 
-  .hero-img {
-    order: 1;
-    width: 100%;
-    height: 50vh;
-    min-height: 350px;
+  .update-modern-title {
+    font-size: 2.8rem;
   }
 
-  .hero-img img {
-    object-fit: cover;
+  .update-role-text {
+    display: none; /* Simplifica no mobile */
   }
 
-  .hero-text {
-    order: 2;
-    align-self: flex-start;
-    padding-bottom: 4rem;
-  }
-
-  /* Ajuste de fontes para mobile */
-  .heading-secondary,
-  .heading-tertiary {
-    font-size: 3.2rem; /* Um pouco maior que 2.8 para manter o impacto */
-    line-height: 1.1;
-  }
-
-  .hero-img-animated {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1.2s ease-out;
-  }
-
-  .hero-img-animated.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .updates-section {
-    display: flex;
-    flex-direction: column;
-    gap: 2.4rem;
-    align-items: center;
-    padding: 4rem 0;
-  }
-
-  .updates-image-box {
-    order: 2;
-  }
-
-  .updates-content {
-    width: 100%;
-    order: 1;
-  }
-
-  .categories-section {
-    height: auto;
-    padding: 4rem 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .categories-section .heading-tertiary {
-    margin-bottom: 4rem;
-    flex-shrink: 0; /* Impede que o título seja esmagado */
-  }
-
-  .categories-box {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-    flex: 1;
-    min-height: 0; /* TRUQUE DE OURO: Permite que os filhos encolham se necessário */
-    align-items: stretch;
+  .update-modern-link {
+    padding: 3rem 0;
   }
 
   .footer {
