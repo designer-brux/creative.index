@@ -4,13 +4,31 @@ import { useState, useEffect } from "react";
 import designersData from "../data/designers.json";
 import maisonsData from "../data/maisons.json";
 
+// 1. OTIMIZAÇÃO: Movemos a constante para fora do componente.
+// Isso impede que o array seja recriado na memória a cada re-render do React.
+const heroSlides = designersData.slice(0, 8).map((d) => ({
+  image: d.image,
+  name: d.name,
+}));
+
+const overlayWords = [
+  "CREATIVE",
+  "DESIGN",
+  "VISIONARY",
+  "IMPACT",
+  "INNOVATION",
+  "INFLUENCE",
+  "COUTURE",
+  "VISIONARY",
+];
+
 export default function Home() {
   const [loading, setLoading] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
+  // 2. CONTROLE DO PRELOADER
   useEffect(() => {
-    // 1. Controle do Preloader via Session Storage
     const hasSeenPreloader = sessionStorage.getItem("hasSeenPreloader");
-
     if (!hasSeenPreloader) {
       setLoading(true);
       const timer = setTimeout(() => {
@@ -21,8 +39,25 @@ export default function Home() {
     }
   }, []);
 
+  // 3. LÓGICA DO CARROSSEL (ROBUSTA)
   useEffect(() => {
-    // 2. Lógica de Animação de Scroll
+    // RISCO MITIGADO: Não inicia o slide enquanto a tela de loading estiver ativa.
+    if (loading) return;
+    if (heroSlides.length === 0) return;
+
+    // SOLUÇÃO: Usamos setTimeout atrelado ao estado atual.
+    // Isso garante que o React limpe e recrie o timer perfeitamente a cada troca de foto.
+    const timer = setTimeout(() => {
+      setCurrentSlide((prev) =>
+        prev === heroSlides.length - 1 ? 0 : prev + 1,
+      );
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, [currentSlide, loading]); // Dependências estritas.
+
+  // 4. OBSERVER DE ANIMAÇÕES DE SCROLL
+  useEffect(() => {
     if (!loading) {
       const observerOptions = { threshold: 0.15 };
       const observer = new IntersectionObserver((entries) => {
@@ -34,7 +69,7 @@ export default function Home() {
       }, observerOptions);
 
       const animatedElements = document.querySelectorAll(
-        ".reveal-text, .img-reveal, .hero-img-animated",
+        ".reveal-text, .img-reveal, .update-item",
       );
       animatedElements.forEach((el) => observer.observe(el));
 
@@ -42,7 +77,6 @@ export default function Home() {
     }
   }, [loading]);
 
-  // 3. Lógica de Cruzamento de Dados (Designers + Maisons)
   const combinedUpdates = [
     ...designersData.map((d) => ({ ...d, type: "creatives" })),
     ...maisonsData.map((m) => ({ ...m, type: "maisons" })),
@@ -69,85 +103,111 @@ export default function Home() {
         className={`container ${!loading ? "fade-in-content" : ""}`}
         style={{ opacity: loading ? 0 : 1 }}
       >
-        <section className="hero">
-          <div className="hero-text">
-            <h2 className="heading-secondary reveal-text">
+        <section className="hero-modern">
+          <div className="hero-centered-wrapper">
+            <div className="hero-content-overlay">
+              <span className="overlay-text left">WE ARE</span>
+              <span
+                key={currentSlide}
+                className="overlay-text right fade-text-anim"
+              >
+                {overlayWords[currentSlide]}
+              </span>
+            </div>
+
+            <div className="hero-slider-mask">
+              {heroSlides.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`hero-slide ${index === currentSlide ? "active" : ""}`}
+                >
+                  <img
+                    src={slide.image}
+                    alt={slide.name}
+                    className="hero-img-masked"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="hero-text-modern">
+            <h2 className="massive-heading reveal-text">
               Dive into the creative legacy of the world’s luxury maisons,
               tracing the visionaries who shaped style, culture, and identity.
             </h2>
           </div>
-          <div className="hero-img hero-img-animated">
-            <img
-              src="/imgs/Elegant Woman Portrait.png"
-              alt="Hero Portrait"
-              className="img-reveal"
-            />
-          </div>
         </section>
 
-        <section className="categories-section">
-          <h2 className="heading-tertiary reveal-text">
-            SEARCH BY <br />
-            CATEGORIES
-          </h2>
-          <div className="categories-box">
-            <Link href="/maisons" className="category-item">
-              <span className="category-label label-left">by.maisons</span>
-              <div className="category-img-wrapper">
-                <img
-                  src="/imgs/fernanda-garcia-QT07ANmTsU8-unsplash.jpg"
-                  alt="Maisons"
-                  className="category-img img-reveal"
-                />
-              </div>
-            </Link>
-            <Link href="/creatives" className="category-item">
-              <span className="category-label label-right">by.creatives</span>
-              <div className="category-img-wrapper">
-                <img
-                  src="/imgs/pexels-cottonbro-5582523.jpg"
-                  alt="Creatives"
-                  className="category-img img-reveal"
-                />
-              </div>
-            </Link>
-          </div>
+        {/* ... (O restante das sections categories-section e updates-section permanecem idênticas ao seu código original) ... */}
+
+        <section className="categories-modern">
+          {/* BLOCO 1: MAISONS (Alinhado à Esquerda) */}
+          <Link href="/maisons" className="cat-modern-item">
+            <div className="cat-text-wrapper">
+              <span className="cat-label-small">EXPLORE ARCHIVE BY</span>
+              <h2 className="cat-huge-text reveal-text">MAISONS</h2>
+            </div>
+            <div className="cat-img-floating right reveal-text">
+              <img
+                src="/imgs/fernanda-garcia-QT07ANmTsU8-unsplash.jpg"
+                alt="Maisons"
+                className="cat-img-fill"
+              />
+            </div>
+          </Link>
+
+          {/* BLOCO 2: CREATIVES (Alinhado à Direita) */}
+          <Link href="/creatives" className="cat-modern-item">
+            <div className="cat-img-floating left reveal-text">
+              <img
+                src="/imgs/pexels-cottonbro-5582523.jpg"
+                alt="Creatives"
+                className="cat-img-fill"
+              />
+            </div>
+            <div className="cat-text-wrapper align-right">
+              <span className="cat-label-small">MEET THE VISIONARIES</span>
+              <h2 className="cat-huge-text reveal-text">CREATIVES</h2>
+            </div>
+          </Link>
         </section>
 
-        <section className="updates-section">
-          <div className="updates-image-box">
-            <img
-              src="/imgs/Elegant Black Dress in Motion.png"
-              alt="Fashion Editorial"
-              className="updates-img img-reveal"
-            />
-          </div>
-          <section className="updates-content">
+        <section className="updates-modern">
+          <div className="updates-header">
             <h2 className="heading-tertiary reveal-text">LATEST UPDATES</h2>
+            <p className="small-p reveal-text">
+              CURATED RECENT ADDITIONS TO THE ARCHIVE
+            </p>
+          </div>
 
-            <ul className="updates-list">
-              {/* CORREÇÃO AQUI: Adicionado o .map() para renderizar a lista combinada */}
-              {latestUpdates.map((item) => (
-                <li
-                  key={`${item.type}-${item.id}`}
-                  className="update-item reveal-text"
+          <ul className="updates-modern-list">
+            {latestUpdates.map((item) => (
+              <li
+                key={`${item.type}-${item.id}`}
+                className="update-modern-item reveal-text"
+              >
+                <Link
+                  href={`/${item.type}/${item.slug}`}
+                  className="update-modern-link"
                 >
-                  <Link
-                    href={`/${item.type}/${item.slug}`}
-                    className="update-link-wrapper"
-                  >
-                    <div className="update-info">
-                      <h3 className="update-title">{item.name}</h3>
-                      <p className="update-category">
-                        {item.type === "maisons" ? `Maison` : item.role}
-                      </p>
-                    </div>
-                    <span className="update-arrow">&rarr;</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
+                  <div className="update-main-info">
+                    <span className="update-type-tag">
+                      {item.type === "maisons" ? "MAISON" : "CREATIVE"}
+                    </span>
+                    <h3 className="update-modern-title">{item.name}</h3>
+                  </div>
+
+                  <div className="update-meta-info">
+                    <p className="update-role-text">
+                      {item.type === "maisons" ? item.origin : item.role}
+                    </p>
+                    <span className="update-modern-arrow">↗</span>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
       </main>
 
