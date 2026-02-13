@@ -606,6 +606,10 @@ body::before {
   align-items: flex-end;
 }
 
+.updates-modern .small-p {
+  color: #1a1a1a;
+}
+
 .updates-modern-list {
   list-style: none;
   display: flex;
@@ -634,17 +638,14 @@ body::before {
 }
 
 .update-type-tag {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  opacity: 0.5;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #999;
 }
 
 .update-modern-title {
   font-size: 4.2rem; /* Tipografia maior e mais impactante */
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+  font-weight: 600;
   line-height: 1;
 }
 
@@ -652,12 +653,6 @@ body::before {
   display: flex;
   align-items: center;
   gap: 4rem;
-}
-
-.update-role-text {
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  opacity: 0.6;
 }
 
 .update-modern-arrow {
@@ -669,12 +664,8 @@ body::before {
 /* --- HOVER EFFECTS --- */
 
 .update-modern-item:hover {
-  background-color: #fff; /* Leve destaque de fundo */
-  padding: 0 2rem;
-}
-
-.update-modern-item:hover .update-modern-title {
-  transform: translateX(10px);
+  background-color: #e4dfdc; /* Leve destaque de fundo */
+  padding-left: 2rem;
 }
 
 .update-modern-item:hover .update-modern-arrow {
@@ -705,7 +696,7 @@ body::before {
 
 .footer-logo .heading-primary {
   color: #fff;
-  font-size: 4vw;
+  font-size: 8vw;
   line-height: 1;
   margin: 0;
   white-space: nowrap;
@@ -836,22 +827,29 @@ body::before {
 }
 
 /******************************************************/
-/* BODY CONTENT */
+/* CREATIVES / MAISONS LISTS */
 /******************************************************/
 
-/* Ajuste para a lista de cards */
 .cards-list {
   list-style: none;
   width: 100%;
 }
 
-.update-link-wrapper {
+.update-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  text-decoration: none;
-  color: inherit;
+  padding: 2.4rem 0;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  mix-blend-mode: multiply;
+  cursor: pointer;
+}
+
+.update-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .update-info {
@@ -864,6 +862,42 @@ body::before {
   text-transform: uppercase;
   color: #999;
   margin-top: 0.4rem;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.update-arrow {
+  font-size: 3.2rem;
+  font-weight: 300;
+  transition: transform 0.4s ease;
+  transform: rotate(-45deg);
+}
+
+.update-item:hover {
+  padding-left: 0 2rem;
+  background-color: #e4dfdc;
+}
+
+.update-item:hover .update-title {
+  transform: translateX(10px);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.update-item:hover .update-category {
+  transform: translateX(10px);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.update-item:hover .update-arrow {
+  transform: rotate(0deg);
+}
+
+.update-link-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
 .hover-preview {
@@ -910,7 +944,6 @@ body::before {
   }
 }
 
-/* Espaçamento superior para não bater no Header fixo */
 .body-content {
   padding: 4rem 0;
 }
@@ -923,7 +956,6 @@ body::before {
   margin-bottom: 1.6rem;
 }
 
-/* Garantir que a animação reveal funcione */
 .reveal-text {
   opacity: 0;
   transform: translateY(20px);
@@ -1011,7 +1043,6 @@ body::before {
   opacity: 0.5;
 }
 
-/* Garante que o input não tenha padding extra agora que tem o botão */
 .search-input {
   width: 100%;
   padding: 1rem 0;
@@ -1092,7 +1123,6 @@ body::before {
 .timeline-list {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #1a1a1a;
 }
 
 .timeline-card {
@@ -1100,7 +1130,7 @@ body::before {
   justify-content: space-between;
   align-items: center;
   padding: 3rem 0;
-  border-bottom: 1px solid #1a1a1a;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
   text-decoration: none;
   color: #1a1a1a;
   transition: all 0.3s ease;
@@ -1119,20 +1149,131 @@ body::before {
 
 /* Interação do Card (Seta e Opacidade) */
 .card-arrow {
-  font-size: 2.4rem;
-  /*opacity: 0.2; Visível mas suave por padrão */
-  transition: all 0.3s ease;
-  transform: translateX(-10px);
+  font-size: 3.2rem;
+  font-weight: 300;
+  transition: all 0.4s ease;
+  transform: rotate(-45deg);
 }
 
 .timeline-card:hover {
-  padding-left: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.02);
+  padding-left: 2rem;
+  background-color: #e4dfdc;
 }
 
 .timeline-card:hover .card-arrow {
-  opacity: 0.4;
-  transform: translateX(0);
+  transform: rotate(0deg);
+}
+
+/******************************************************/
+/* CONTACT PAGE STYLE */
+/******************************************************/
+
+.contact-layout {
+  background: #f2edeb;
+}
+.contact-layout .profile-info-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 8rem 4rem 4rem;
+}
+
+.contact-layout .profile-header {
+  width: 100%;
+}
+
+.contact-layout .heading-secondary {
+  margin-bottom: 1.6rem;
+}
+
+.contact-layout .large-p {
+  max-width: 100%;
+}
+
+.contact-layout .profile-meta {
+  margin-bottom: 0;
+}
+
+.contact-form-container {
+  margin-top: 4rem;
+  width: 100%;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1); /* Estilo de linha, não de caixa */
+  padding-bottom: 1rem;
+}
+
+.form-group label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #1a1a1a;
+}
+
+.form-group input,
+.form-group textarea {
+  background: transparent;
+  border: none;
+  font-family: "General Sans", sans-serif;
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  outline: none;
+  width: 100%;
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #1a1a1a81;
+}
+
+/* BOTÃO ENVIAR DISRUPTIVO */
+.submit-btn {
+  align-self: flex-start;
+  background: #1a1a1a;
+  color: #fff;
+  border: none;
+  padding: 1.6rem 3.2rem;
+  font-family: "General Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #333;
+  padding-right: 4rem;
+}
+
+.btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover .btn-arrow {
+  transform: translateX(10px);
+}
+
+.success-message {
+  padding: 4rem 0;
 }
 
 /******************************************************/
@@ -1232,7 +1373,6 @@ body::before {
     font-size: 14vw;
   }
 
-  /* No mobile, a imagem deixa de ser absoluta para empilhar */
   .cat-img-floating {
     position: relative;
     width: 100%;
@@ -1250,7 +1390,6 @@ body::before {
     margin-left: 0;
   }
 
-  /* Inverter ordem para o segundo item (Texto primeiro) */
   .cat-modern-item:nth-child(2) {
     flex-direction: column-reverse;
   }
@@ -1365,6 +1504,14 @@ body::before {
 
   .profile-info-column {
     margin-top: 3.2rem;
+  }
+
+  .contact-visual {
+    height: 40vh !important;
+  }
+
+  .contact-form-container {
+    max-width: 100%;
   }
 }
 
