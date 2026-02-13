@@ -192,16 +192,13 @@ export default function Home() {
                   className="update-modern-link"
                 >
                   <div className="update-main-info">
+                    <h3 className="update-modern-title">{item.name}</h3>
                     <span className="update-type-tag">
                       {item.type === "maisons" ? "MAISON" : "CREATIVE"}
                     </span>
-                    <h3 className="update-modern-title">{item.name}</h3>
                   </div>
 
                   <div className="update-meta-info">
-                    <p className="update-role-text">
-                      {item.type === "maisons" ? item.origin : item.role}
-                    </p>
                     <span className="update-modern-arrow">↗</span>
                   </div>
                 </Link>
