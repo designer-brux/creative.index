@@ -199,7 +199,7 @@ export default function Home() {
                   </div>
 
                   <div className="update-meta-info">
-                    <span className="update-modern-arrow">↗</span>
+                    <span className="update-arrow">&rarr;</span>
                   </div>
                 </Link>
               </li>
