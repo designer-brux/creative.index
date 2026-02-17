@@ -330,27 +330,15 @@
     "slug": "dario-vitale",
     "career": [
       {
-        "maison": "Balenciaga",
-        "slug": "balenciaga",
-        "period": "2015 – Present",
-        "current": true
-      },
-      {
-        "maison": "Vetements",
-        "slug": "vetements",
-        "period": "2014 – 2019",
+        "maison": "Versace",
+        "slug": "versace",
+        "period": "2025 – 2025",
         "current": false
       },
       {
-        "maison": "Louis Vuitton",
-        "slug": "louis-vuitton",
-        "period": "2013 – 2014",
-        "current": false
-      },
-      {
-        "maison": "Maison Margiela",
-        "slug": "maison-margiela",
-        "period": "2009 – 2013",
+        "maison": "Miu Miu",
+        "slug": "miu-miu",
+        "period": "2015 – 2025",
         "current": false
       }
     ],

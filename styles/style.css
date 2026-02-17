@@ -328,13 +328,8 @@ body::before {
   padding: 1.6rem;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
-
-/* .nav-header a:hover,
-.nav-header a:active {
-    background-color: #ddd;
-} */
 
 .btn-mobile-nav {
   border: none;
@@ -376,7 +371,6 @@ body::before {
   align-items: center;
 }
 
-/* MÁSCARA PADRÃO CENTRALIZADA */
 .hero-slider-mask {
   width: 450px;
   height: 600px;
@@ -394,21 +388,17 @@ body::before {
   filter: grayscale(100%);
 }
 
-/* TEXTO OVERLAY - POSICIONAMENTO EM RELAÇÃO AO CENTRO */
 .hero-content-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(
-    -50%,
-    -50%
-  ); /* Centraliza o container de texto no meio exato */
+  transform: translate(-50%, -50%);
   width: 100%;
-  max-width: 1200px; /* Limite para o texto não colar nas bordas da tela */
+  max-width: 1200px;
   display: flex;
-  justify-content: space-between; /* Joga um texto para cada lado */
+  justify-content: space-between;
   padding: 0 4rem;
-  z-index: 1; /* Fica atrás da imagem */
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -418,10 +408,9 @@ body::before {
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #1a1a1a;
-  white-space: nowrap; /* ADICIONADO: Impede que o texto quebre em telas menores */
+  white-space: nowrap;
 }
 
-/* Nova animação suave para a troca de palavras */
 .fade-text-anim {
   display: inline-block;
   animation: slideTextUp 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
@@ -450,13 +439,12 @@ body::before {
 
 .hero-slide.active {
   opacity: 1;
-  z-index: 2; /* Garante que o slide ativo fique por cima dos apagados */
+  z-index: 2;
 }
 
-/* Tipografia com mais respiro */
 .hero-text-modern {
   padding: 20rem 4rem;
-  max-width: 1100px; /* Texto um pouco mais estreito para melhor leitura */
+  max-width: 1100px;
 }
 
 .massive-heading {
@@ -524,6 +512,7 @@ body::before {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: -0.04em;
+  white-space: nowrap;
   transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -535,20 +524,12 @@ body::before {
 
 /* Hover Effect no Texto */
 .cat-modern-item:hover .cat-huge-text {
-  transform: translateX(20px); /* Move levemente */
-  /* color: transparent;
-  -webkit-text-stroke: 2px #1a1a1a;  Opcional: vira outline no hover */
   opacity: 0.7;
-}
-
-.cat-modern-item:hover .align-right .cat-huge-text {
-  transform: translateX(-20px);
 }
 
 /* --- IMAGEM FLUTUANTE --- */
 .cat-img-floating {
   position: absolute;
-  /* Definindo tamanho fixo e igual para ambas */
   width: 30vw;
   height: 40vw;
   max-width: 500px;
@@ -579,14 +560,7 @@ body::before {
   transition: transform 1.2s ease;
 }
 
-/* Hover Effect na Imagem */
-.cat-modern-item:hover .cat-img-floating {
-  opacity: 1;
-  width: 32vw; /* Crescimento sutil e igual */
-}
-
 .cat-modern-item:hover .cat-img-fill {
-  transform: scale(1.1);
   filter: grayscale(0%);
 }
 
@@ -668,8 +642,8 @@ body::before {
   padding-left: 2rem;
 }
 
-.update-modern-item:hover .update-modern-arrow {
-  transform: rotate(45deg);
+.update-modern-item:hover .update-arrow {
+  transform: rotate(0deg);
 }
 
 /******************************************************/
@@ -1352,6 +1326,20 @@ body::before {
     font-size: 3.2rem;
   }
 
+  .hero-modern {
+    display: flex;
+  }
+
+  .hero-centered-wrapper {
+    padding-bottom: 10rem;
+    order: 1;
+  }
+
+  .hero-text-modern {
+    order: 0;
+    padding: 0 0 10rem 0;
+  }
+
   .hero-content-overlay {
     display: none;
   }
@@ -1367,6 +1355,14 @@ body::before {
     min-height: auto;
     gap: 2rem;
     padding: 0 2rem;
+  }
+
+  .categories-modern:nth-child(2) .cat-img-floating {
+    order: 1;
+  }
+
+  .categories-modern:nth-child(2) .cat-text-wrapper {
+    order: 0;
   }
 
   .cat-huge-text {
@@ -1388,10 +1384,6 @@ body::before {
     align-items: flex-start;
     text-align: left;
     margin-left: 0;
-  }
-
-  .cat-modern-item:nth-child(2) {
-    flex-direction: column-reverse;
   }
 
   .footer {
